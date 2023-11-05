@@ -20,14 +20,17 @@ class Player:
 
     def update(self):
         # Update player position based on movement flags
+
+        # Values below 1 make it so the keydowns don't work: Need to Fix!!
+        
         if self.moving_up and self.rect.top > 0:
-            self.rect.y -= 3
+            self.rect.y -= 1
         if self.moving_down and self.rect.bottom < self.screen.get_height():
-            self.rect.y += 3
+            self.rect.y += 1
         if self.moving_left and self.rect.left > 0:
-            self.rect.x -= 3
+            self.rect.x -= 1
         if self.moving_right and self.rect.right < self.screen.get_width():
-            self.rect.x += 3
+            self.rect.x += 1
 
     def draw_player(self):
         # Draw the player on the screen
