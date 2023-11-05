@@ -19,7 +19,7 @@ class Player:
 
         self.x_pos = self.rect.centerx  # Use a separate float attribute for x position
         self.y_pos = self.rect.centery  # Use a separate float attribute for y position
-        self.speed = 0.2  # Using a small float value for slower movement
+        self.speed = 0.3  # Using a small float value for slower movement
 
     def update(self):
         # Update player position based on movement flags
