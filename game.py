@@ -12,7 +12,8 @@ class PacmanGame:
 
         # Creating instances of player and enemies
         self.player = Player(self.screen)
-        self.enemies = [Enemy(self.screen) for _ in range(4)]
+        self.enemies = [Enemy(self.screen, 100, 100), Enemy(self.screen, 200, 200)]  # Example: 2 enemies
+
 
     def run_game(self):
         running = True
@@ -28,7 +29,7 @@ class PacmanGame:
             self.player.draw_player()
 
             for enemy in self.enemies:
-                enemy.update()
+                enemy.update(self.player.rect)
                 enemy.draw_enemy()
 
             pygame.display.flip()  # Updating the screen
