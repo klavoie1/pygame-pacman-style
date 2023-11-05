@@ -15,7 +15,8 @@ class PacmanGame:
         self.enemies = [Enemy(self.screen) for _ in range(4)]
 
     def run_game(self):
-        while True:
+        running = True
+        while running:
             self.screen.fill(self.settings.bg_color)  # Fill for the screen background
 
             for event in pygame.event.get():
