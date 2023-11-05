@@ -2,6 +2,7 @@ import pygame
 from settings import Settings
 from player import Player
 from enemies import Enemy
+from gamemap import GameMap
 
 class PacmanGame:
     def __init__(self):
@@ -13,6 +14,7 @@ class PacmanGame:
         # Creating instances of player and enemies
         self.player = Player(self.screen)
         self.enemies = [Enemy(self.screen, 100, 100), Enemy(self.screen, 200, 200)]  # Example: 2 enemies
+        self.game_map = GameMap()
 
 
     def run_game(self):
@@ -31,6 +33,8 @@ class PacmanGame:
             for enemy in self.enemies:
                 enemy.update(self.player.rect)
                 enemy.draw_enemy()
+
+            self.game_map.draw_map(self.screen)
 
             pygame.display.flip()  # Updating the screen
 
