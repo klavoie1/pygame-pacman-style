@@ -22,6 +22,7 @@ class PacmanGame:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
+                self.player.handle_events(event)
 
             self.player.update()
             self.player.draw_player()
