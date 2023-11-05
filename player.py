@@ -32,3 +32,24 @@ class Player:
     def draw_player(self):
         # Draw the player on the screen
         self.screen.blit(self.image, self.rect)
+
+    def handle_events(self, event):
+        # Handles keyboard presses for player movement
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_w:
+                self.moving_up = True
+            elif event.key == pygame.K_a:
+                self.moving_left = True
+            elif event.key == pygame.K_s:
+                self.moving_down = True
+            elif event.key == pygame.K_d:
+                self.moving_right = True
+        elif event.type == pygame.KEYUP:
+            if event.key == pygame.K_w:
+                self.moving_up = False
+            elif event.key == pygame.K_a:
+                self.moving_left = False
+            elif event.key == pygame.K_s:
+                self.moving_down = False
+            elif event.key == pygame.K_d:
+                self.moving_right = False
