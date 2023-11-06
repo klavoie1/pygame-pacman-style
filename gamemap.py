@@ -10,13 +10,18 @@ class GameMap:
             [1, 0, 1, 1, 0, 1, 1, 0, 1, 1],
             [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
             [1, 1, 1, 0, 1, 1, 1, 1, 0, 1],
-            [1, 0, 0, 0, 1, 1, 0, 0, 1, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
+            [1, 0, 1, 1, 0, 1, 1, 0, 1, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 1, 1, 0, 1, 1, 1, 1, 0, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
         ]
         
         self.cell_size = min(screen_width // len(self.map_data[0]), screen_height // len(self.map_data))
         self.map_width = len(self.map_data[0]) * self.cell_size
-        self.map_height = len(self.map_data) * self.cell_size
+        self.map_height = len(self.map_data[0]) * self.cell_size
 
     def is_wall(self, x, y):
         grid_x = x // self.cell_size
