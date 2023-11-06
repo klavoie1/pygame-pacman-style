@@ -27,11 +27,11 @@ class PacmanGame:
                     running = False
                 self.player.handle_events(event)
 
-            self.player.update()
+            self.player.update(self.game_map)
             self.player.draw_player()
 
             for enemy in self.enemies:
-                enemy.update(self.player.rect)
+                enemy.update(self.player.rect, self.game_map)
                 enemy.draw_enemy()
 
             self.game_map.draw_map(self.screen)
