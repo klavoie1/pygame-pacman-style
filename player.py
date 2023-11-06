@@ -1,4 +1,5 @@
 import pygame
+from gamemap import GameMap
 
 class Player:
     def __init__(self, screen):
@@ -17,15 +18,27 @@ class Player:
         self.moving_left = False
         self.moving_right = False
 
-        self.x_pos = self.rect.centerx  # Use a separate float attribute for x position
-        self.y_pos = self.rect.centery  # Use a separate float attribute for y position
-        self.speed = 0.3  # Using a small float value for slower movement
+        self.x_pos = self.rect.centerx
+        self.y_pos = self.rect.centery
+        self.speed = 0.3
 
-    def update(self):
+    def check_collision(self, x, y, game_map):
+        # Check for collisions with walls
+        player_rect = pygame.Rect(self.rect)
+        player_rect.x = x
+        player_rect.y = y
+
+        for row in game_map.map_data:
+            for wall in row:
+                if wall == 1:
+                    wall_rect = pygame.Rect(row.index(wall) * game_map.cell_size, game_map.map_data.index(row) * game_map.cell_size, game_map.cell_size, game_map.cell_size)
+                    if player_rect.colliderect(wall_rect):
+                        return True  # Collision detected
+
+        return False  # No collision
+
+    def update(self, game_map):
         # Update player position based on movement flags
-
-        # Values below 1 make it so the keydowns don't work: Need to Fix!!
-
         if self.moving_up and self.rect.top > 0:
             self.y_pos -= self.speed
         if self.moving_down and self.rect.bottom < self.screen.get_height():
@@ -37,6 +50,12 @@ class Player:
 
         self.rect.centerx = int(self.x_pos)
         self.rect.centery = int(self.y_pos)
+
+        # Update player position based on movement flags and collision detection
+        if self.moving_up and self.rect.top > 0 and not self.check_collision(self.rect.x, self.rect.y - self.speed, game_map):
+            self.rect.y -= self.speed
+
+        # Need to implement similar collision detection for other directions
 
     def draw_player(self):
         # Draw the player on the screen
