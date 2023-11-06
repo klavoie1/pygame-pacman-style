@@ -14,7 +14,7 @@ class PacmanGame:
         # Creating instances of player and enemies
         self.player = Player(self.screen)
         self.enemies = [Enemy(self.screen, 100, 100), Enemy(self.screen, 200, 200)]  # Example: 2 enemies
-        self.game_map = GameMap()
+        self.game_map = GameMap(self.settings.screen_width, self.settings.screen_height)
 
 
     def run_game(self):
